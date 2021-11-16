@@ -58,7 +58,7 @@ namespace asiimoviet
 
 		void init()
 		{
-			if (hasLabel())      this->label = cfg_json["label"];
+			if (hasLabel())      this->label     = cfg_json["label"];
 			if (hasDayOneDate()) this->day1_date = cfg_json["day1_date"];
 		}
 
