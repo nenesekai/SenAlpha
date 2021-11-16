@@ -1,3 +1,39 @@
 {
-  "label": "SSAP Regular Schedule Config"
+  "classes": [
+    "ACT1",
+    "AP Statistics Class 2",
+    "Contemporary English-Class 2",
+    "AP Physics C E&M-Roger",
+    "AP Environmental Science-Stephen Zhou",
+    "AP Psychology-Class 1-Andy Liang"
+  ],
+  "days": [
+    {
+      "day_offset": 0,
+      "column": "C",
+      "time_column": "B"
+    },
+    {
+      "day_offset": 1,
+      "column": "E",
+      "time_column": "D"
+    },
+    {
+      "day_offset": 2,
+      "column": "F",
+      "time_column": "D"
+    },
+    {
+      "day_offset": 3,
+      "column": "G",
+      "time_column": "D"
+    },
+    {
+      "day_offset": 4,
+      "column": "H",
+      "time_column": "D"
+    }
+  ],
+  "label": "SSAP Regular Schedule Config",
+  "time_format": "${start}-${end}"
 }

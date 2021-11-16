@@ -1,9 +1,9 @@
-#define SETW_VALUE 40
-
 #include <iostream>
 
 #include <xlnt/xlnt.hpp>
 #include <nlohmann/json.hpp>
+
+constexpr auto SETW_VALUE = 40;
 
 #include "schedule.hpp"
 #include "config.hpp"
@@ -14,8 +14,11 @@ constexpr auto DEBUG_CONFIG_PATH = "C:\\Users\\Asiimoviet\\Source\\Repos\\Sen\\S
 
 int main()
 {
-	asiimoviet::Schedule schedule(DEBUG_XLSX_PATH);
 	asiimoviet::Config   config(DEBUG_CONFIG_PATH);
+	asiimoviet::Schedule schedule(DEBUG_XLSX_PATH, config.getDays());
+
+	schedule.extractClasses(config.getClasses());
+	schedule.printAllClasses();
 
 	return 0;
 }
