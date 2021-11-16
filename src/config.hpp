@@ -40,7 +40,7 @@ namespace asiimoviet
 				std::fstream* cfg_file = new std::fstream();
 
 				cfg_file->open(path_to_file);
-				*cfg_file >> cfg_json;
+			   *cfg_file >> cfg_json;
 				cfg_file->close();
 
 				delete cfg_file;
