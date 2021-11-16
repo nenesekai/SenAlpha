@@ -22,8 +22,8 @@ namespace asiimoviet
 
 	public:
 
-		bool hasLabel() { return !cfg_json["label"].is_null(); }
-		bool hasDayOneDate() { return !cfg_json["day1_date"].is_null(); }
+		bool hasLabel()                { return !cfg_json["label"].is_null(); }
+		bool hasDayOneDate()           { return !cfg_json["day1_date"].is_null(); }
 		bool hasPeriodIndicateColumn() { return !cfg_json["period_indicate_column"].is_null(); }
 
 		Config(std::string path_to_file)
