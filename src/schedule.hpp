@@ -35,9 +35,9 @@ namespace asiimoviet
 			}
 			catch (xlnt::exception e)
 			{
-				std::cerr << "Failed" << std::endl;
+				std::cerr << "Failed"                       << std::endl;
 				std::cerr << "Error Occurred: " << e.what() << std::endl;
-				std::cerr << "Exiting..." << std::endl;
+				std::cerr << "Exiting..."                   << std::endl;
 
 				exit(1);
 			}

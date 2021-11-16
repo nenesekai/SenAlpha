@@ -14,11 +14,11 @@ namespace asiimoviet
 
 	private:
 
-		nlohmann::json	cfg_json;
+		nlohmann::json  cfg_json;
 
-		std::string		label;
-		std::string		day1_date;
-		std::string		period_indicate_column;
+		std::string     label;
+		std::string     day1_date;
+		std::string     period_indicate_column;
 
 	public:
 
@@ -47,9 +47,9 @@ namespace asiimoviet
 			}
 			catch (std::exception exp)
 			{
-				std::cerr << "Failed" << std::endl;
+				std::cerr << "Failed"                         << std::endl;
 				std::cerr << "Error Occurred: " << exp.what() << std::endl;
-				std::cerr << "Exiting" << std::endl;
+				std::cerr << "Exiting"                        << std::endl;
 
 				exit(1);
 			}
@@ -58,7 +58,7 @@ namespace asiimoviet
 
 		void init()
 		{
-			if (hasLabel())		 this->label = cfg_json["label"];
+			if (hasLabel())      this->label = cfg_json["label"];
 			if (hasDayOneDate()) this->day1_date = cfg_json["day1_date"];
 		}
 
