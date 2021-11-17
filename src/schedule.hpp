@@ -5,8 +5,10 @@
 #include <iomanip>
 #include <vector>
 #include <xlnt/xlnt.hpp>
+#include <date/tz.h>
 
 #include "class.hpp"
+#include "config.hpp"
 #include "day.hpp"
 
 namespace asiimoviet
@@ -23,7 +25,9 @@ namespace asiimoviet
 
 	public:
 
-		Schedule() {}
+		Schedule()
+			: days(new std::vector<Day*>())
+		{}
 
 		Schedule(std::string path_to_file, std::vector<Day*>* days)
 			: days(days)
@@ -57,8 +61,10 @@ namespace asiimoviet
 		/// Then extract corresponding information
 		/// </summary>
 		/// <param name="classes">The classes selected by the user</param>
-		void extractClasses(std::vector<std::string> classes)
+		void process(Config& config)
 		{
+			std::clog << std::left << std::setw(SETW_VALUE) << "Reading xlsx File for Classes Information ...";
+
 			for (auto column : worksheet.columns())
 			{
 				Day* day = nullptr;
@@ -68,7 +74,7 @@ namespace asiimoviet
 					; day_iter < days->end()
 					; day_iter++)
 				{
-					if ((*day_iter)->getColumn() == column.front().column().column_string())
+					if ((*day_iter)->get_column() == column.front().column().column_string())
 					{
 						day = *day_iter;
 					}
@@ -78,26 +84,67 @@ namespace asiimoviet
 				{
 					for (auto cell : column)
 					{
-						for (auto class_iter = classes.begin()
-							; class_iter < classes.end()
+						for (auto class_iter = config.getClasses()->begin()
+							; class_iter < config.getClasses()->end()
 							; class_iter++)
 						{
 							if (cell.to_string().find(*class_iter) != -1)
 							{
-								day->getSelectedClasses()->push_back(new Class(
-									cell.to_string()
+								std::string time_str = "";
+
+								// find the time for the corresponding class
+								for (int row_i = cell.row()
+									; row_i != 0
+									; row_i--)
+								{
+									if (worksheet.cell(day->get_time_column(), row_i).has_value())
+									{
+										time_str = worksheet.cell(day->get_time_column(), row_i).to_string();
+										break;
+									}
+								}
+
+								// if time is not found, fatal error
+								if (time_str.length() == 0) 
+								{
+									std::cout << "Failed" << std::endl << std::endl;
+									std::cerr << "Processing Error: Can\'t find time corresponding to the class"
+										<< ", please check your config and the file" << std::endl;
+									std::cerr << "Exiting..." << std::endl;
+
+									exit(1);
+								}
+
+								// clip the beginning and ending time
+								std::string start_str = time_str.substr(0, time_str.find("-"));
+								std::string end_str   = time_str.substr(time_str.find("-") + 1);
+
+								auto dtstart = config.getDayOneDate() + date::days(day->get_day_offset()) 
+									+ std::chrono::hours(std::stoi(start_str.substr(0, start_str.find(":"))))
+									+ std::chrono::minutes(std::stoi(start_str.substr(start_str.find(":") + 1)));
+								auto dtend   = config.getDayOneDate() + date::days(day->get_day_offset())
+									+ config.get_time(end_str);
+
+								std::string str      = cell.to_string();
+								std::string label    = str.substr(0, str.rfind(config.getClassroomConnector()));
+								std::string cr       = str.substr(str.rfind(config.getClassroomConnector()) + 1);
+
+								day->get_classes()->push_back(new Class(
+									label, cr, dtstart, dtend
 								));
 							}
 						}
 					}
 				}
 			}
+
+			std::clog << "Success" << std::endl;
 		}
 
 		/// <summary>
 		/// Print all classes in the class
 		/// </summary>
-		void printAllClasses()
+		void print_classes()
 		{
 			std::cout << std::endl;
 			
@@ -105,13 +152,13 @@ namespace asiimoviet
 				; day_iter < days->end()
 				; day_iter++)
 			{
-				std::cout << "Day " << (*day_iter)->getDayOffset() + 1 << std::endl << std::endl;
+				std::cout << "Day " << (*day_iter)->get_day_offset() + 1 << std::endl << std::endl;
 
-				for (auto class_iter = (*day_iter)->getSelectedClasses()->begin()
-					; class_iter < (*day_iter)->getSelectedClasses()->end()
+				for (auto class_iter = (*day_iter)->get_classes()->begin()
+					; class_iter < (*day_iter)->get_classes()->end()
 					; class_iter++)
 				{
-					std::cout << "Label:\t" << (*class_iter)->getLabel() << std::endl;
+					(*class_iter)->print();
 					std::cout << std::endl;
 				}
 				

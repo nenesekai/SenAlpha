@@ -1,4 +1,4 @@
-add_executable(SenAlpha client.cpp "day.hpp")
+add_executable(SenAlpha client.cpp "day.hpp" "schedule.hpp.bak" )
 
 target_link_libraries(SenAlpha 
 	PRIVATE 

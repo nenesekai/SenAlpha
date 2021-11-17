@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Asiimoviet\Source\Repos\Sen\SenAlpha\src\client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Asiimoviet\Source\Repos\Sen\SenAlpha\src\day.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Asiimoviet\vcpkg\installed\x64-windows\include\date\date.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Asiimoviet\vcpkg\installed\x64-windows\include\date\tz.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Asiimoviet\Source\Repos\Sen\SenAlpha\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="C:\Users\Asiimoviet\vcpkg\installed\x64-windows\share\nlohmann_json\nlohmann_json.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{EBB72279-15BB-389B-88AD-E8DF21E7F927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{73CD0013-2944-3072-9412-95305511E5FE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

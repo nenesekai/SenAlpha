@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Asiimoviet\Source\Repos\Sen\SenAlpha\build\CMakeFiles\6dc011afdbc0d2ea9451112f5d1a066b\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{077137CE-8397-3A03-B888-384C162B8DA9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

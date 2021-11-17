@@ -20,22 +20,39 @@ namespace asiimoviet
 
 		std::string               label;
 		std::string               time_format;
+		std::string               classroom_connector;
+		std::string               day_one_date;
 
 		std::vector<std::string>  classes;
 		std::vector<Day*>*        days; // this copy of days is one without classes stored
 
 	public:
 
-		bool hasLabel()   { return !cfg_json["label"]  .is_null(); }
-		bool hasClasses() { return !cfg_json["classes"].is_null(); }
-		bool hasDays()    { return !cfg_json["days"]   .is_null(); }
+		bool has_label()               { return !cfg_json["label"]              .is_null(); }
+		bool has_classes()             { return !cfg_json["classes"]            .is_null(); }
+		bool has_days()                { return !cfg_json["days"]               .is_null(); }
+		bool has_classroom_connector() { return !cfg_json["classroom_connector"].is_null(); }
+		bool has_day_one_date()        { return !day_one_date.length() == 0; }
 
 		Config(std::string path_to_file)
+			: days(new std::vector<Day*>)
 		{
-			days = new std::vector<Day*>;
-
 			load(path_to_file);
 			init();
+		}
+
+		Config(std::string path_to_file, std::string day_one_date)
+			: day_one_date(day_one_date)
+			, days(new std::vector<Day*>)
+		{
+			load(path_to_file);
+			init();
+		}
+
+		std::chrono::duration<int> get_time(std::string str)
+		{
+			return std::chrono::hours(std::stoi(str.substr(0, str.find(":"))))
+				+ std::chrono::minutes(std::stoi(str.substr(str.find(":") + 1)));
 		}
 
 		/// <summary>
@@ -43,9 +60,9 @@ namespace asiimoviet
 		/// </summary>
 		/// <returns>Classes from user configuration file</returns>
 		/// TODO: Make sure there is something in it
-		std::vector<std::string> getClasses()
+		std::vector<std::string>* getClasses()
 		{
-			return classes;
+			return &classes;
 		}
 
 		/// <summary>
@@ -55,6 +72,29 @@ namespace asiimoviet
 		std::vector<Day*>* getDays()
 		{
 			return days;
+		}
+
+		/// <summary>
+		/// Return the classroom connector
+		/// </summary>
+		/// <returns>classroom_connector</returns>
+		std::string getClassroomConnector()
+		{
+			return classroom_connector;
+		}
+
+		/// <summary>
+		/// Return the day one date
+		/// </summary>
+		/// <returns>day one date</returns>
+		date::local_days getDayOneDate()
+		{
+			std::stringstream str_stream(day_one_date);
+			
+			date::local_days ld;
+			str_stream >> date::parse("%Y-%m-%d", ld);
+
+			return ld;
 		}
 
 		/// <summary>
@@ -93,12 +133,18 @@ namespace asiimoviet
 			std::clog << std::left << std::setw(SETW_VALUE) << "Trying to read from the config...";
 			try
 			{
-				if (hasLabel())   label   = cfg_json["label"];
+				if (has_label())   
+					label   = cfg_json["label"];
 
-				if (hasClasses()) classes = cfg_json["classes"].get<std::vector<std::string>>();
+				if (has_classes()) 
+					classes = cfg_json["classes"].get<std::vector<std::string>>();
 				else throw(std::exception("missing classes from config file"));
+
+				if (has_classroom_connector())
+					classroom_connector = cfg_json["classroom_connector"];
+				else throw(std::exception("missing classroom connector from config file"));
 				
-				if (hasDays())
+				if (has_days())
 				{
 					for (auto day : cfg_json["days"])
 					{

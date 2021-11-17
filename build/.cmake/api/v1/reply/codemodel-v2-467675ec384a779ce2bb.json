@@ -1,0 +1,340 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						2
+					]
+				},
+				{
+					"build" : "src",
+					"jsonFile" : "directory-src-Debug-c94b7c2814d5a21df52c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "SenAlpha",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-Debug-4300d4b611fc1cc81a1a.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "SenAlpha::@145eef247bfb46b6828c",
+					"jsonFile" : "target-SenAlpha-Debug-6e96248b1c1a188b9cf3.json",
+					"name" : "SenAlpha",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-Debug-cb63cfbed8bd230988a4.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						2
+					]
+				},
+				{
+					"build" : "src",
+					"jsonFile" : "directory-src-Release-c94b7c2814d5a21df52c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "SenAlpha",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-Release-4300d4b611fc1cc81a1a.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "SenAlpha::@145eef247bfb46b6828c",
+					"jsonFile" : "target-SenAlpha-Release-4f6de2632e81558fa855.json",
+					"name" : "SenAlpha",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-Release-cb63cfbed8bd230988a4.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-MinSizeRel-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						2
+					]
+				},
+				{
+					"build" : "src",
+					"jsonFile" : "directory-src-MinSizeRel-c94b7c2814d5a21df52c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "MinSizeRel",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "SenAlpha",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-4300d4b611fc1cc81a1a.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "SenAlpha::@145eef247bfb46b6828c",
+					"jsonFile" : "target-SenAlpha-MinSizeRel-05eb806d35397ac926d4.json",
+					"name" : "SenAlpha",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-MinSizeRel-cb63cfbed8bd230988a4.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-RelWithDebInfo-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						2
+					]
+				},
+				{
+					"build" : "src",
+					"jsonFile" : "directory-src-RelWithDebInfo-c94b7c2814d5a21df52c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "SenAlpha",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-4300d4b611fc1cc81a1a.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "SenAlpha::@145eef247bfb46b6828c",
+					"jsonFile" : "target-SenAlpha-RelWithDebInfo-996005dd1b0c90d3087f.json",
+					"name" : "SenAlpha",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-RelWithDebInfo-cb63cfbed8bd230988a4.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Asiimoviet/Source/Repos/Sen/SenAlpha/build",
+		"source" : "C:/Users/Asiimoviet/Source/Repos/Sen/SenAlpha"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

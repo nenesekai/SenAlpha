@@ -35,5 +35,6 @@
     }
   ],
   "label": "SSAP Regular Schedule Config",
-  "time_format": "${start}-${end}"
+  "time_format": "${start}-${end}",
+  "classroom_connector": "-"
 }
