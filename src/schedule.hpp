@@ -2,6 +2,7 @@
 #define SCHEDULE_HPP_
 
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <vector>
 #include <xlnt/xlnt.hpp>
@@ -84,8 +85,8 @@ namespace asiimoviet
 				{
 					for (auto cell : column)
 					{
-						for (auto class_iter = config.getClasses()->begin()
-							; class_iter < config.getClasses()->end()
+						for (auto class_iter = config.get_classes()->begin()
+							; class_iter < config.get_classes()->end()
 							; class_iter++)
 						{
 							if (cell.to_string().find(*class_iter) != -1)
@@ -119,15 +120,14 @@ namespace asiimoviet
 								std::string start_str = time_str.substr(0, time_str.find("-"));
 								std::string end_str   = time_str.substr(time_str.find("-") + 1);
 
-								auto dtstart = config.getDayOneDate() + date::days(day->get_day_offset()) 
-									+ std::chrono::hours(std::stoi(start_str.substr(0, start_str.find(":"))))
-									+ std::chrono::minutes(std::stoi(start_str.substr(start_str.find(":") + 1)));
-								auto dtend   = config.getDayOneDate() + date::days(day->get_day_offset())
+								auto dtstart = config.get_day_one_date() + date::days(day->get_day_offset())
+									+ config.get_time(start_str);
+								auto dtend   = config.get_day_one_date() + date::days(day->get_day_offset())
 									+ config.get_time(end_str);
 
 								std::string str      = cell.to_string();
-								std::string label    = str.substr(0, str.rfind(config.getClassroomConnector()));
-								std::string cr       = str.substr(str.rfind(config.getClassroomConnector()) + 1);
+								std::string label    = str.substr(0, str.rfind(config.get_classroom_connector()));
+								std::string cr       = str.substr(str.rfind(config.get_classroom_connector()) + 1);
 
 								day->get_classes()->push_back(new Class(
 									label, cr, dtstart, dtend
@@ -166,6 +166,22 @@ namespace asiimoviet
 			}
 
 			std::cout << std::endl;
+		}
+
+		/// <summary>
+		/// Output the schedule with classes to a stream in icalendar format
+		/// </summary>
+		/// <param name="of_stream">output file stream</param>
+		void ical(std::ofstream& of_stream)
+		{
+			of_stream << "BEGIN:VCALENDAR" << std::endl;
+
+			for (auto day_iter = days->begin(); day_iter < days->end(); day_iter++)
+			{
+				(*day_iter)->ical(of_stream);
+			}
+
+			of_stream << "END:VCALENDAR" << std::endl;
 		}
 	};
 }

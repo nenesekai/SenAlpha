@@ -1,6 +1,9 @@
 #ifndef DAY_HPP_
 #define DAY_HPP_
 
+#include <fstream>
+#include <vector>
+
 #include "class.hpp"
 
 namespace asiimoviet
@@ -34,6 +37,14 @@ namespace asiimoviet
 			, time_column(time_column)
 			, classes(new std::vector<Class*>())
 		{}
+
+		void ical(std::ofstream& of_stream)
+		{
+			for (auto class_iter = classes->begin(); class_iter < classes->end(); class_iter++)
+			{
+				(*class_iter)->ical(of_stream);
+			}
+		}
 
 	};
 }

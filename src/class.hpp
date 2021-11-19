@@ -2,6 +2,7 @@
 #define CLASS_HPP_
 
 #include <iostream>
+#include <fstream>
 
 #include "date/tz.h"
 
@@ -39,14 +40,22 @@ namespace asiimoviet
 			, dtend(dtend)
 		{}
 
-		std::string getLabel() { return label; }
-
 		void print()
 		{
 			std::cout << std::left << std::setw(15) << "Label"     << label     << std::endl;
 			std::cout << std::left << std::setw(15) << "Classroom" << classroom << std::endl;
 			std::cout << std::left << std::setw(15) << "Dtstart"   << dtstart   << std::endl;
 			std::cout << std::left << std::setw(15) << "Dtend"     << dtend     << std::endl;
+		}
+
+		void ical(std::ofstream& of_stream)
+		{
+			of_stream << "BEGIN:VEVENT" << std::endl;
+			of_stream << "SUMMARY:"     << label << std::endl;
+			of_stream << "DTSTART:"     << date::format("%Y%m%dT%H%M%SZ", dtstart - std::chrono::hours(8)) << std::endl;
+			of_stream << "DTEND:"       << date::format("%Y%m%dT%H%M%SZ", dtend   - std::chrono::hours(8)) << std::endl;
+			of_stream << "LOCATION:"    << classroom << std::endl;
+			of_stream << "END:VEVENT"   << std::endl;
 		}
 		
 	};

@@ -49,6 +49,11 @@ namespace asiimoviet
 			init();
 		}
 
+		/// <summary>
+		/// Convert time string to time
+		/// </summary>
+		/// <param name="str">Time in string</param>
+		/// <returns>Time in duration</returns>
 		std::chrono::duration<int> get_time(std::string str)
 		{
 			return std::chrono::hours(std::stoi(str.substr(0, str.find(":"))))
@@ -60,7 +65,7 @@ namespace asiimoviet
 		/// </summary>
 		/// <returns>Classes from user configuration file</returns>
 		/// TODO: Make sure there is something in it
-		std::vector<std::string>* getClasses()
+		std::vector<std::string>* get_classes()
 		{
 			return &classes;
 		}
@@ -69,7 +74,7 @@ namespace asiimoviet
 		/// Get the pointer to days
 		/// </summary>
 		/// <returns>Pointer to days</returns>
-		std::vector<Day*>* getDays()
+		std::vector<Day*>* get_days()
 		{
 			return days;
 		}
@@ -78,7 +83,7 @@ namespace asiimoviet
 		/// Return the classroom connector
 		/// </summary>
 		/// <returns>classroom_connector</returns>
-		std::string getClassroomConnector()
+		std::string get_classroom_connector()
 		{
 			return classroom_connector;
 		}
@@ -87,7 +92,7 @@ namespace asiimoviet
 		/// Return the day one date
 		/// </summary>
 		/// <returns>day one date</returns>
-		date::local_days getDayOneDate()
+		date::local_days get_day_one_date()
 		{
 			std::stringstream str_stream(day_one_date);
 			
@@ -172,7 +177,7 @@ namespace asiimoviet
 		/// Print all classes read from the configuration
 		/// </summary>
 		/// WARNING: DO NOT USE BEFORE init()
-		void printClasses()
+		void print_classes()
 		{
 			std::cout << std::endl << "Read these classes: " << std::endl;
 
